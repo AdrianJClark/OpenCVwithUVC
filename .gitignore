@@ -1,0 +1,10 @@
+.DS_Store
+/.gradle
+/.idea
+/app/build
+/libuvccamera/build
+/opencv/build
+/opencv/src/main/obj
+/usbCameraCommon/build
+/.idea
+/build

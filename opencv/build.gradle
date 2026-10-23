@@ -27,6 +27,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 android {
 	compileSdkVersion versionCompiler
 	buildToolsVersion versionBuildTool
+	namespace "com.serenegiant.opencv"
 
 	defaultConfig {
 		minSdkVersion 18
@@ -34,6 +35,10 @@ android {
 		versionCode 1
 		versionName "1.0"
 		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+	}
+
+	buildFeatures {
+		aidl true
 	}
 
 	buildTypes {

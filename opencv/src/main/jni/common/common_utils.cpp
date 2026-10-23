@@ -32,6 +32,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <cstring>
 
 /**
  * get current time millis

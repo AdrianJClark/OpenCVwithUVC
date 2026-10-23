@@ -4,6 +4,8 @@ android {
 	compileSdkVersion versionCompiler
 	buildToolsVersion versionBuildTool
 
+	namespace "com.serenegiant.opencvwithuvc"
+
 	defaultConfig {
 		minSdkVersion 18
 		targetSdkVersion versionTarget
@@ -35,6 +37,6 @@ dependencies {
 	}
 
 	implementation project(':opencv')
-	implementation project(':usbCameraCommon-release')
-	implementation project(':libuvccamera-release')
+	implementation project(':usbCameraCommon')
+	implementation project(':libuvccamera')
 }
