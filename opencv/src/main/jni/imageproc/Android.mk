@@ -29,8 +29,8 @@ OPENCV_INSTALL_MODULES:=on
 OPENCV_LIB_TYPE:=SHARED
 
 # OpenCV3 (3.20)を使う
-include $(LOCAL_PATH)/../opencv3/OpenCV.mk
-LOCAL_SHARED_LIBRARIES += opencv_java3
+include $(LOCAL_PATH)/../opencv4/jni/OpenCV.mk
+LOCAL_SHARED_LIBRARIES += opencv_java4
 
 LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/ \
