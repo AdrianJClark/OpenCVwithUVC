@@ -8,3 +8,5 @@
 /usbCameraCommon/build
 /.idea
 /build
+/libuvccamera/src/main/obj
+/uvcpupildetector/build
