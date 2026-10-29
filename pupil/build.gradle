@@ -1,0 +1,75 @@
+plugins {
+    id("com.android.application")
+    id("com.chaquo.python")
+}
+
+android {
+    compileSdkVersion versionCompiler
+    buildToolsVersion versionBuildTool
+
+    namespace "com.pupillabs.pupil"
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion versionTarget
+        versionCode 1
+        versionName "1.0"
+
+        applicationId "com.pupillabs.pupil"
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "arm64-v8a" //, "armeabi-v7a", "x86", "x86_64"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+}
+
+chaquopy {
+    defaultConfig {
+        // Fixes the versioning issue: forces Chaquopy to build a Python 3.13 runtime
+        version = "3.13"
+
+        extractPackages "cv2"
+        pip {
+            // Paths are relative to the project root directory
+            install "packaging>=20.0,<22"
+            install "pyzmq"
+            install "msgpack-1.2.4-py3-none-any.whl"
+            install "opencv_python-4.14.0+f2f0bcb-cp313-cp313-android_24_arm64_v8a.whl"
+            install "pupil_detectors-2.0.3.dev0+gcd297a0bc.d20261023-cp313-cp313-android_24_arm64_v8a.whl"
+
+            options "--extra-index-url", "https://chaquo.com/pypi-upstream/"
+        }
+    }
+    sourceSets {
+        main {
+            srcDirs = ["src/main/python/pupil_src", "src/main/python/pupil_src/shared_modules"]
+        }
+    }
+
+}
+
+dependencies {
+    implementation("com.android.support:appcompat-v7:27.1.1")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
+    androidTestImplementation("com.android.support.test:runner:1.0.2")
+
+    implementation("com.serenegiant:common:${commonLibVersion}") {
+        exclude module: 'support-v4'
+    }
+
+    implementation project(':opencv')
+    implementation project(':usbCameraCommon')
+    implementation project(':libuvccamera')
+}
